@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,7 +6,7 @@
         <title>Class System Main Page</title>
     </head>
     <body>
-        <h1>JSU Class System</h1>
+        <h1>JSU Class System</h1>      
         <a href="<%= request.getContextPath() %>/MAIN/search.jsp">Search for Classes</a>
         <br>
         <a href="<%= request.getContextPath() %>/MAIN/registration.jsp">Register for Classes</a>

@@ -23,7 +23,7 @@
                     CRN:
                     <input id="crn" type="number" name="crn">
                 </p>
-                <input type="submit" value="Submit" onclick ="return SchedulePlannerProject2.register();">
+                <input type="submit" value="Submit" onclick ="Project2.register();">
             </fieldset>
         </form>
             <div id="output" name="output"></div>
@@ -33,7 +33,7 @@
         
     </body>
     <script>
-        SchedulePlannerProject2.getSchedule();
+        Project2.getSchedule();
     </script>
   
 </html>
