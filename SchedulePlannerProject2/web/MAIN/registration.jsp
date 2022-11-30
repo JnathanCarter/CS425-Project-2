@@ -33,7 +33,8 @@
         
     </body>
     <script>
-        Project2.getSchedule();
+    $("#regform").click(function(e){e.preventDefault();});           
+    Project2.getSchedule();
     </script>
   
 </html>

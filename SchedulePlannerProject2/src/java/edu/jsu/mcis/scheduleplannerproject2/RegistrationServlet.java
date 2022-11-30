@@ -38,7 +38,7 @@ public class RegistrationServlet extends HttpServlet {
         DAOFactory daoFactory = null;
 
         ServletContext context = request.getServletContext();
-
+        Bean projBean = (Bean)request.getSession().getAttribute("projBean");
         if (context.getAttribute("daoFactory") == null) {
             System.err.println("*** Creating new DAOFactory ...");
             daoFactory = new DAOFactory();
@@ -49,7 +49,6 @@ public class RegistrationServlet extends HttpServlet {
         }
         
         RegistrationDAO dao = daoFactory.getRegistrationDAO();
-        Bean projBean = (Bean)request.getSession().getAttribute("projBean");
         
         response.setContentType("application/json; charset=UTF-8");
         
@@ -93,7 +92,9 @@ public class RegistrationServlet extends HttpServlet {
             int studentid = dao.getStudentId(request.getRemoteUser());
             int termid = Integer.parseInt(projBean.getParameters().get("term"));
             int crn = Integer.parseInt(request.getParameter("crn"));
-            
+             System.err.println("studentid-------"+studentid);
+            System.err.println("termid-------"+termid);
+            System.err.println("crn-------"+crn);
             out.println(dao.create(studentid, termid, crn));
             
         }
@@ -106,7 +107,7 @@ public class RegistrationServlet extends HttpServlet {
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DAOFactory daoFactory = null;
-
+System.err.println("got into doDelete()");
         ServletContext context = request.getServletContext();
 
         if (context.getAttribute("daoFactory") == null) {
@@ -127,6 +128,10 @@ public class RegistrationServlet extends HttpServlet {
             int studentid = dao.getStudentId(request.getRemoteUser());
             int termid = Integer.parseInt(projBean.getParameters().get("term"));
             int crn = Integer.parseInt(request.getParameter("crn"));
+           
+            System.err.println("studentid-------"+studentid);
+            System.err.println("termid-------"+termid);
+            System.err.println("crn-------"+crn);
             
             out.println(dao.delete(termid, studentid, crn));
             

@@ -19,7 +19,7 @@
                     CRN:
                     <input id="crn" type="number" name="crn">
                 </p>
-                <input type="submit" value="Submit" onclick ="return SchedulePlannerProject2.delete();">
+                <input type="submit" value="Submit" onclick =" Project2.delete();">
             </fieldset>
         </form>
         <div id="output" name="output"></div>
@@ -28,7 +28,8 @@
         </p>
         
         <script>
-            SchedulePlannerProject2.getSchedule();
+    $("#delform").click(function(e){e.preventDefault();});       
+    Project2.getSchedule();
         </script>
         
     </body>
