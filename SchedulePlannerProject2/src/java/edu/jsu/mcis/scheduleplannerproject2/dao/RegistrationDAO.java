@@ -85,6 +85,9 @@ public class RegistrationDAO {
                     sections.add(section);
                 }
                 json.put("sections", sections);
+                                System.err.println("jsondate-------");
+                                System.err.println(json.toJSONString());
+
             }
 
         }
