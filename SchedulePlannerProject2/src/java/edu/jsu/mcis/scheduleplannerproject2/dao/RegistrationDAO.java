@@ -30,6 +30,12 @@ public class RegistrationDAO {
         this.daoFactory = dao;
     }
 
+    /**
+     * 
+     * @param termid
+     * @param studentid
+     * @return
+     */
     public String find(int termid, int studentid) {
         JSONObject json = new JSONObject();
         JSONArray sections = new JSONArray();
@@ -126,6 +132,13 @@ public class RegistrationDAO {
         return JSONValue.toJSONString(json);
     }
 
+    /**
+     * 
+     * @param studentid
+     * @param termid
+     * @param crn
+     * @return
+     */
     public String create(int studentid, int termid, int crn) {
 
         PreparedStatement ps = null;
@@ -171,6 +184,11 @@ public class RegistrationDAO {
         return "This is not a valid CRN!";
     }
 
+    /**
+     * 
+     * @param username
+     * @return
+     */
     public Integer getStudentId(String username) {
         Integer id = null;
         Connection conn = daoFactory.getConnection();
@@ -217,6 +235,13 @@ public class RegistrationDAO {
         return id;
     }
 
+    /**
+     * 
+     * @param termid
+     * @param studentid
+     * @param crn
+     * @return
+     */
     public String delete(int termid, int studentid, int crn) {
         JSONObject json = new JSONObject();
         json.put("success", false);
