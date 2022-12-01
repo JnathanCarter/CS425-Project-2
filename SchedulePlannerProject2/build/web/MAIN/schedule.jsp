@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View Schedule</title>
-        <script type="text/javascript" src="scripts/p2JS.js"></script>
+        <script type="text/javascript" src="scripts/UtilityScripts.js"></script>
         <script type="text/javascript" src="scripts/jquery-3.6.1.min.js"></script>
         <link rel="stylesheet" type="text/css" media="screen" href="style.css">
     </head>

@@ -7,15 +7,15 @@
     </head>
     <body>
         <h1>JSU Class System</h1>      
-        <a href="<%= request.getContextPath() %>/MAIN/search.jsp">Search for Classes</a>
+        <a href="<%= request.getContextPath() %>/main/search.jsp">Search for Classes</a>
         <br>
-        <a href="<%= request.getContextPath() %>/MAIN/registration.jsp">Register for Classes</a>
+        <a href="<%= request.getContextPath() %>/main/registration.jsp">Register for Classes</a>
         <br>
-        <a href="<%= request.getContextPath() %>/MAIN/schedule.jsp">Look at Current Schedule</a>
+        <a href="<%= request.getContextPath() %>/main/schedule.jsp">Look at Current Schedule</a>
         <br>
-        <a href="<%= request.getContextPath() %>/MAIN/drop.jsp">Drop a Course</a>
+        <a href="<%= request.getContextPath() %>/main/drop.jsp">Drop a Course</a>
         <br>
-        <a href="<%= request.getContextPath() %>/MAIN/report.jsp">Generate Schedule as PDF</a>
+        <a href="<%= request.getContextPath() %>/main/report.jsp">Generate Schedule as PDF</a>
         <p>
             <input type="button" value="Logout" onclick="window.open('<%= request.getContextPath() %>/MAIN/logout.jsp', '_self', false);" />
         </p>

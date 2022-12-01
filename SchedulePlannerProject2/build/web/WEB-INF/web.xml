@@ -14,15 +14,15 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
-        <url-pattern>/MAIN/search</url-pattern>
+        <url-pattern>/main/search</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegistrationServlet</servlet-name>
-        <url-pattern>/MAIN/register</url-pattern>
+        <url-pattern>/main/register</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ReportServlet</servlet-name>
-        <url-pattern>/MAIN/report</url-pattern>
+        <url-pattern>/main/report</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -30,14 +30,14 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>MAIN/landing.jsp</welcome-file>
+        <welcome-file>main/landing.jsp</welcome-file>
     </welcome-file-list>
     <security-constraint>
         <display-name>Main</display-name>
         <web-resource-collection>
             <web-resource-name>Main</web-resource-name>
             <description/>
-            <url-pattern>/MAIN/*</url-pattern>
+            <url-pattern>/main/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>

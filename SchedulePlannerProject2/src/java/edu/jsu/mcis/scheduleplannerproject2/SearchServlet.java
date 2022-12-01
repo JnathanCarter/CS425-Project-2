@@ -11,68 +11,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class SearchServlet extends HttpServlet {
-
-    //R
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SearchServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SearchServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DAOFactory daoFactory = null;
 
         ServletContext context = request.getServletContext();
-        Bean projBean = (Bean)request.getSession().getAttribute("projBean");
+        Bean projBean = (Bean) request.getSession().getAttribute("projBean");
 
         if (context.getAttribute("daoFactory") == null) {
             System.err.println("*** Creating new DAOFactory ...");
             daoFactory = new DAOFactory();
             context.setAttribute("daoFactory", daoFactory);
-        }
-        else {
+        } else {
             daoFactory = (DAOFactory) context.getAttribute("daoFactory");
         }
-        
-        try ( PrintWriter out = response.getWriter()) {
+
+        try (PrintWriter out = response.getWriter()) {
             response.setContentType("application/json; charset=UTF-8");
-        
-            SearchDAO dao = daoFactory.getSearchDAO();  
-             System.out.println("------------------");
+
+            SearchDAO dao = daoFactory.getSearchDAO();
+            System.out.println("------------------");
             System.out.println(projBean.getParameters());
             out.println(dao.find(projBean.getParameters()));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
-    }
 
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
-
-    
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
-
 }

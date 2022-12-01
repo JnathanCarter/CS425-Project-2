@@ -1,5 +1,5 @@
 var Project2 = (function () {
-
+    //TODO redo this complicated mess
     var createSearchResults = function (data) {
         var sections = data.sections;
         var table = document.createElement("table");
@@ -103,7 +103,7 @@ var Project2 = (function () {
 
         getSearchResults: function () {
             $.ajax({
-                url: "http://localhost:8180/SchedulePlannerProject2/MAIN/search",
+                url: "http://localhost:8180/SchedulePlannerProject2/main/search",
                 method: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -119,9 +119,9 @@ var Project2 = (function () {
 
         },
         register: function () {
-          //  $("#delform").click(function(e){e.preventDefault();});       
+            //  $("#delform").click(function(e){e.preventDefault();});       
             $.ajax({
-                url: "http://localhost:8180/SchedulePlannerProject2/MAIN/register",
+                url: "http://localhost:8180/SchedulePlannerProject2/main/register",
                 method: 'POST',
                 data: $('#regform').serialize(),
                 dataType: 'json',
@@ -134,15 +134,14 @@ var Project2 = (function () {
                     }
 
                 }
-                
+
             });
 
-            return false;
         },
 
         getSchedule: function () {
             $.ajax({
-                url: "http://localhost:8180/SchedulePlannerProject2/MAIN/register",
+                url: "http://localhost:8180/SchedulePlannerProject2/main/register",
                 method: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -155,22 +154,16 @@ var Project2 = (function () {
                         createSearchResults(data);
                     }
 
-                },
-                error: function () {
-                    $("#output").html("No classes have been registered! Register for classes here:"
-                        + "<br><br><a href=\"term_1.jsp\">"
-                        + "Register for Classes</a>");
                 }
             });
 
-            return false;
         },
 
         delete: function () {
-           
-            var that   = this;
+
+            var that = this;
             console.log("got into delete");
-            var url = "http://localhost:8180/SchedulePlannerProject2/MAIN/register?";
+            var url = "http://localhost:8180/SchedulePlannerProject2/main/register?";
             url = url + $("#delform").serialize();
             console.log("custome url=================" + url);
             $.ajax({
@@ -180,14 +173,9 @@ var Project2 = (function () {
                 success: function (data) {
                     $("#output").prepend("Course dropped successfully!");
                     that.getSchedule();
-                },
-                error: function () {
-                    $("#output").prepend("<p>The CRN is either not valid, or does not belong to a class" +
-                        " you've registered for! Please try again.</p>");
                 }
             });
 
-            return false;
         }
 
     };

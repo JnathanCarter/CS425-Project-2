@@ -29,7 +29,7 @@
     </head>
     <body>
         <a href="landing.jsp">Back</a>
-        <form action="<%= request.getContextPath() %>/MAIN/searchresults.jsp" method="GET">
+        <form action="<%= request.getContextPath() %>/main/searchresults.jsp" method="GET">
             <fieldset>
                 <legend>Class Schedule Search</legend>
                 <p>
