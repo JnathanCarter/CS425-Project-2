@@ -61,7 +61,7 @@ System.err.println("random code in searchresult"); %>
         <div id="output" name="output"></div>
 
         <script type="text/javascript">
-            Project2.getSearchResults();
+            Project2.search();
         </script>
         <p>
             <input

@@ -65,7 +65,26 @@ var Project2 = (function () {
 
     return {
 
-        getSearchResults: function () {
+        getSchedule: function () {
+            $.ajax({
+                url: "http://localhost:8180/SchedulePlannerProject2/main/register",
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    if (data.sections.length === 0) {
+                        $("#output").html("No classes have been registered! Register for classes here:"
+                            + "<br><br><a href=\"term_1.jsp\">"
+                            + "Register for Classes</a>");
+                    }
+                    else {
+                        displaySectionsTable(data);
+                    }
+
+                }
+            });
+
+        },
+        search: function () {
             $.ajax({
                 url: "http://localhost:8180/SchedulePlannerProject2/main/search",
                 method: 'GET',
@@ -104,27 +123,8 @@ var Project2 = (function () {
 
         },
 
-        getSchedule: function () {
-            $.ajax({
-                url: "http://localhost:8180/SchedulePlannerProject2/main/register",
-                method: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    if (data.sections.length === 0) {
-                        $("#output").html("No classes have been registered! Register for classes here:"
-                            + "<br><br><a href=\"term_1.jsp\">"
-                            + "Register for Classes</a>");
-                    }
-                    else {
-                        displaySectionsTable(data);
-                    }
 
-                }
-            });
-
-        },
-
-        delete: function () {
+        unregister: function () {
 
             var that = this;
             console.log("got into delete");

@@ -50,7 +50,7 @@
                 <input
                     type="submit"
                     value="Submit"
-                    onclick=" Project2.delete();"
+                    onclick=" Project2.unregister();"
                 />
             </fieldset>
         </form>
