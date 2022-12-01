@@ -1,5 +1,5 @@
 var Project2 = (function () {
-    var createSearchResults = function (data) {
+    var displaySectionsTable = function (data) {
         var sections = data.sections;
         var output = document.getElementById("output");
 
@@ -76,7 +76,7 @@ var Project2 = (function () {
                     }
                     else {
                         console.log(data);
-                        createSearchResults(data);
+                        displaySectionsTable(data);
                     }
 
                 }
@@ -95,7 +95,7 @@ var Project2 = (function () {
                         $("#output").html("No classes were found that meet your search criteria ");
                     }
                     else {
-                        createSearchResults(data);
+                        displaySectionsTable(data);
                     }
 
                 }
@@ -116,7 +116,7 @@ var Project2 = (function () {
                             + "Register for Classes</a>");
                     }
                     else {
-                        createSearchResults(data);
+                        displaySectionsTable(data);
                     }
 
                 }
