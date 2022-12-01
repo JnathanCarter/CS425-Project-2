@@ -2,100 +2,68 @@ var Project2 = (function () {
     //TODO redo this complicated mess
     var createSearchResults = function (data) {
         var sections = data.sections;
-        var table = document.createElement("table");
-        var dash = " - ";
-        var tbody = document.createElement("tbody");
+        var output = document.getElementById("output");
 
-
+        //possibily delet
+        //var table = document.createElement("table");
+        //var tbody = document.createElement("tbody");
+        var text = " ";
 
         for (var i = 0; i < sections.length; ++i) {
             var section = sections[i];
-            var tr1 = document.createElement("tr");
-            var tr2 = document.createElement("tr");
 
-            var th = document.createElement("th");
-            th.class = "ddtitle";
-            th.id = "sectionheader";
-            th.name = "sectionheader";
-            th.innerHTML = section.description + dash + section.crn + dash +
-                section.subjectid + " " + section.num + dash + section.section;
-            tr1.append(th);
+            text += ("<table>");
+            text += ("<tbody>");
 
-            var outerTD = document.createElement("td");
-            outerTD.class = "dddefault";
+            //create header
 
-            var spanInners = ["Associated Term: ", "Level: ", section.credits + " Credits"];
-            var spanOuters = [section.termname, section.level, ""];
+            text += ("<h3>" + section.description + " - " + section.crn + " - " +
+                section.subjectid + " " + section.num + " - " + section.section)
+            text += ("</h3>");
 
-            for (var j = 0; j < spanInners.length; j++) {
-                var span = document.createElement("span");
-                var br = document.createElement("br");
-                span.id = "fieldlabeltext";
-                span.name = "fieldlabeltext";
-                span.innerHTML = spanInners[j];
-                outerTD.append(span);
-                outerTD.append(spanOuters[j]);
-                outerTD.append(br);
-                if (j === spanInners.length - 1) {
-                    var br = document.createElement("br");
-                    outerTD.append(br);
-                }
-            }
+            //daterow
 
-            var sectTbody = document.createElement("tbody");
-            var sectHeaderTR = document.createElement("tr");
-            var sectTableTR = document.createElement("tr");
-            var sectionHeaders = ["Time", "Days", "Where", "Date Range", "Schedule Type", "Instructor(s)"];
-            var sectionData = [section.scheduletypeid, section.days, section.where,
-            section.termstart + dash + section.termend, section.scheduletype, section.instructor];
+            text += ("<tr>");
+            text += ("<td>");
 
-            for (var j = 0; j < sectionHeaders.length; j++) {
-                var th = document.createElement("th");
-                th.class = "ddheader";
-                th.scope = "col";
-                th.innerHTML = sectionHeaders[j];
-                sectHeaderTR.append(th);
-            }
+            text += ("<span> Associated Term :" + section.termname + "</span><br>");
+            text += ("<span>Level :" + section.level + "</span><br>");
+            text += ("<span>" + section.credits + " Credits</span><br>");
 
 
-            for (var j = 0; j < sectionData.length; j++) {
-                var td = document.createElement("td");
-                td.class = "dddefault";
+            text += ("<tr>");
 
-                if (j === 0) {
-                    if (sectionData[j] === "ONL") {
-                        td.innerHTML = "TBA";
-                    }
-                    else {
-                        var inner = section.start + dash + section.end;
-                        td.innerHTML = inner;
-                    }
-                }
-                else {
-                    td.innerHTML = sectionData[j];
-                }
+            text += ("<th scope = \"col\">Time</th>");
+            text += ("<th scope = \"col\">Days</th>");
+            text += ("<th scope = \"col\">Where</th>");
+            text += ("<th scope = \"col\">Date Ranger</th>");
+            text += ("<th scope = \"col\">Schedule Type</th>");
+            text += ("<th scope = \"col\">Instructor(s)</th>");
 
-                sectTableTR.append(td);
-            }
-            sectTbody.append(sectHeaderTR);
-            sectTbody.append(sectTableTR);
-            sectTbody.append(br);
+            text += ("</tr>");
 
-            outerTD.append(sectTbody);
+            text += ("<tr>");
+
+            text += ("<td>" + section.start + " - " + section.end + "</td>");
+            text += ("<td>" + section.days + "</td>");
+            text += ("<td>" + section.where + "</td>");
+            text += ("<td>" + section.termstart + " - " + section.termend + "</td>");
+            text += ("<td>" + section.scheduletype + "</td>");
+            text += ("<td>" + section.instructor + "</td>");
 
 
-            tr2.append(outerTD);
+            text += ("</tr>");
 
-            tbody.append(tr1);
-            tbody.append(tr2);
 
-            var table = document.createElement("table");
-            table.id = "datadisplaytable";
-            table.name = "datadisplaytable";
-            table.append(tbody);
+
+            text += ("</td>");
+            text += ("</tr>");
+
+            text += ("</tbody>");
+            text += ("</table>");
         }
 
-        $("#output").html(table);
+        output.innerHTML = text;
     };
 
 
@@ -111,6 +79,7 @@ var Project2 = (function () {
                         $("#output").html("No classes were found that meet your search criteria ");
                     }
                     else {
+                        console.log(data);
                         createSearchResults(data);
                     }
 
