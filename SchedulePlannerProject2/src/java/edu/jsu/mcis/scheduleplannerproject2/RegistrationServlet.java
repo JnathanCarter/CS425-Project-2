@@ -12,25 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class RegistrationServlet extends HttpServlet {
 
-   
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RegistrationServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet RegistrationServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -107,7 +88,7 @@ public class RegistrationServlet extends HttpServlet {
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DAOFactory daoFactory = null;
-System.err.println("got into doDelete()");
+           System.err.println("got into doDelete()");
         ServletContext context = request.getServletContext();
 
         if (context.getAttribute("daoFactory") == null) {
@@ -142,9 +123,6 @@ System.err.println("got into doDelete()");
     }
 
     
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
+   
 
 }

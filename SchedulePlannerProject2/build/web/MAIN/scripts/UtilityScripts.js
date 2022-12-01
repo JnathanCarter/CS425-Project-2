@@ -1,12 +1,8 @@
 var Project2 = (function () {
-    //TODO redo this complicated mess
     var createSearchResults = function (data) {
         var sections = data.sections;
         var output = document.getElementById("output");
 
-        //possibily delet
-        //var table = document.createElement("table");
-        //var tbody = document.createElement("tbody");
         var text = " ";
 
         for (var i = 0; i < sections.length; ++i) {
