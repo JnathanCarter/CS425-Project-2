@@ -119,7 +119,6 @@ var Project2 = (function () {
             console.log("got into delete");
             var url = "http://localhost:8180/SchedulePlannerProject2/main/register?";
             url = url + $("#delform").serialize();
-            console.log("custome url=================" + url);
             $.ajax({
                 url: url,
                 method: 'DELETE',
