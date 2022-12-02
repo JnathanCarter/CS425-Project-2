@@ -32,6 +32,108 @@ public class RegistrationDAO {
 
     /**
      * 
+     * @param studentid
+     * @param termid
+     * @param crn
+     * @return
+     */
+    public String create(int studentid, int termid, int crn) {
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            Connection conn = daoFactory.getConnection();
+
+            ps = conn.prepareStatement(QUERY_CREATE);
+            ps.setInt(1, studentid);
+            ps.setInt(2, termid);
+            ps.setInt(3, crn);
+
+            int updateCount = ps.executeUpdate();
+            boolean hasResults = updateCount > 0;
+            if (hasResults) {
+                return this.find(termid, studentid);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+        return "This is not a valid CRN!";
+    }
+
+    /**
+     * *
+     * 
+     * @param termid
+     * @param studentid
+     * @param crn
+     * @return
+     */
+    public String delete(int termid, int studentid, int crn) {
+        JSONObject json = new JSONObject();
+        json.put("success", false);
+
+        PreparedStatement ps = null;
+
+        try {
+
+            Connection conn = daoFactory.getConnection();
+
+            ps = conn.prepareStatement(QUERY_DELETE);
+            ps.setInt(1, termid);
+            ps.setInt(2, studentid);
+            ps.setInt(3, crn);
+
+            int updateCount = ps.executeUpdate();
+
+            if (updateCount > 0) {
+                json.put("success", true);
+            }
+
+        }
+
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        finally {
+
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+        return JSONValue.toJSONString(json);
+    }
+
+    /**
+     * 
      * @param termid
      * @param studentid
      * @return
@@ -134,58 +236,6 @@ public class RegistrationDAO {
 
     /**
      * 
-     * @param studentid
-     * @param termid
-     * @param crn
-     * @return
-     */
-    public String create(int studentid, int termid, int crn) {
-
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        try {
-            Connection conn = daoFactory.getConnection();
-
-            ps = conn.prepareStatement(QUERY_CREATE);
-            ps.setInt(1, studentid);
-            ps.setInt(2, termid);
-            ps.setInt(3, crn);
-
-            int updateCount = ps.executeUpdate();
-            boolean hasResults = updateCount > 0;
-            if (hasResults) {
-                return this.find(termid, studentid);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        finally {
-
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-
-        return "This is not a valid CRN!";
-    }
-
-    /**
-     * 
      * @param username
      * @return
      */
@@ -235,52 +285,4 @@ public class RegistrationDAO {
         return id;
     }
 
-    /**
-     * 
-     * @param termid
-     * @param studentid
-     * @param crn
-     * @return
-     */
-    public String delete(int termid, int studentid, int crn) {
-        JSONObject json = new JSONObject();
-        json.put("success", false);
-
-        PreparedStatement ps = null;
-
-        try {
-
-            Connection conn = daoFactory.getConnection();
-
-            ps = conn.prepareStatement(QUERY_DELETE);
-            ps.setInt(1, termid);
-            ps.setInt(2, studentid);
-            ps.setInt(3, crn);
-
-            int updateCount = ps.executeUpdate();
-
-            if (updateCount > 0) {
-                json.put("success", true);
-            }
-
-        }
-
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        finally {
-
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-
-        return JSONValue.toJSONString(json);
-    }
 }

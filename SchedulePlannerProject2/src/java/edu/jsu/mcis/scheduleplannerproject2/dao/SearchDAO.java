@@ -40,314 +40,6 @@ public class SearchDAO {
         this.daoFactory = dao;
     }
 
-    public String getSubjectListAsHTML() {
-
-        StringBuilder myStringBuilder = new StringBuilder();
-
-        Connection conn = daoFactory.getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        try {
-
-            ps = conn.prepareStatement(QUERY_SUBJECT_LIST);
-
-            boolean hasresults = ps.execute();
-
-            if (hasresults) {
-
-                rs = ps.getResultSet();
-
-                myStringBuilder.append("<select name=\"subject\" id=\"subject\" size=\"10\">");
-
-                while (rs.next()) {
-
-                    String id = rs.getString("id");
-                    String description = rs.getString("name");
-
-                    myStringBuilder.append("<option value=\"").append(id).append("\">");
-                    myStringBuilder.append(description);
-                    myStringBuilder.append("</option>");
-
-                }
-
-                myStringBuilder.append("</select>");
-
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-
-            if (rs != null) {
-                try {
-                    rs.close();
-                    rs = null;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if (ps != null) {
-                try {
-                    ps.close();
-                    ps = null;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                    conn = null;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-
-        return myStringBuilder.toString();
-
-    }
-
-    public String getScheduleTypeListAsHTML() {
-
-        StringBuilder myStringBuilder = new StringBuilder();
-
-        Connection conn = daoFactory.getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        try {
-
-            ps = conn.prepareStatement(QUERY_SCHEDULETYPE_LIST);
-
-            boolean hasresults = ps.execute();
-
-            if (hasresults) {
-
-                rs = ps.getResultSet();
-
-                myStringBuilder.append("<select name=\"scheduleType\" id=\"scheduleType\"size=\"3\">");
-                myStringBuilder.append("<option value=\"0\" selected=\"\">All</option>");
-
-                while (rs.next()) {
-
-                    String id = rs.getString("id");
-                    String description = rs.getString("description");
-
-                    myStringBuilder.append("<option value=\"").append(id).append("\">");
-                    myStringBuilder.append(description);
-                    myStringBuilder.append("</option>");
-
-                }
-
-                myStringBuilder.append("</select>");
-
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-
-            if (rs != null) {
-                try {
-                    rs.close();
-                    rs = null;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if (ps != null) {
-                try {
-                    ps.close();
-                    ps = null;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                    conn = null;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-
-        return myStringBuilder.toString();
-
-    }
-
-    public String getLevelListAsHTML() {
-
-        StringBuilder myStringBuilder = new StringBuilder();
-
-        Connection conn = daoFactory.getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        try {
-
-            ps = conn.prepareStatement(QUERY_LEVEL_LIST);
-
-            boolean hasresults = ps.execute();
-
-            if (hasresults) {
-
-                rs = ps.getResultSet();
-
-                myStringBuilder.append("<select name=\"courseLevel\" id=\"courseLevel\"size=\"3\">");
-
-                myStringBuilder.append("<option value=\"0\" selected=\"\">All</option>");
-
-                while (rs.next()) {
-
-                    String id = rs.getString("id");
-                    String description = rs.getString("description");
-
-                    myStringBuilder.append("<option value=\"").append(id).append("\">");
-                    myStringBuilder.append(description);
-                    myStringBuilder.append("</option>");
-
-                }
-
-                myStringBuilder.append("</select>");
-
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-
-            if (rs != null) {
-                try {
-                    rs.close();
-                    rs = null;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if (ps != null) {
-                try {
-                    ps.close();
-                    ps = null;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                    conn = null;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-
-        return myStringBuilder.toString();
-
-    }
-
-    public String getTermListAsHTML() {
-
-        StringBuilder myStringBuilder = new StringBuilder();
-
-        Connection conn = daoFactory.getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        try {
-
-            ps = conn.prepareStatement(QUERY_TERM_LIST);
-
-            boolean hasresults = ps.execute();
-
-            if (hasresults) {
-
-                rs = ps.getResultSet();
-
-                myStringBuilder.append("<select name=\"term\" id=\"term\">");
-
-                while (rs.next()) {
-
-                    String id = rs.getString("id");
-                    String description = rs.getString("name");
-
-                    myStringBuilder.append("<option value=\"").append(id).append("\">");
-                    myStringBuilder.append(description);
-                    myStringBuilder.append("</option>");
-
-                }
-
-                myStringBuilder.append("</select>");
-
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-
-            if (rs != null) {
-                try {
-                    rs.close();
-                    rs = null;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if (ps != null) {
-                try {
-                    ps.close();
-                    ps = null;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                    conn = null;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-
-        return myStringBuilder.toString();
-
-    }
-
-    public String getTimeFieldsAsHTML(String type) {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("Hour <select id=\"").append(type).append("hour\" name=\"").append(type)
-                .append("hour\" size=\"1\">");
-        for (int i = 0; i <= 12; i++) {
-            sb.append("<option value=\"").append(i).append("\">")
-                    .append(String.format("%02d", i)).append("</option>");
-        }
-        sb.append("</select>");
-
-        sb.append(" Minute <select id=\"").append(type).append("min\" name=\"").append(type)
-                .append("min\" size=\"1\">");
-        for (int i = 0; i <= 55; i += 5) {
-            sb.append("<option value=\"").append(i).append("\">")
-                    .append(String.format("%02d", i)).append("</option>");
-        }
-        sb.append("</select>");
-
-        sb.append(" AM/PM <select id=\"").append(type).append("ap\" name=\"").append(type)
-                .append("ap\" size=\"1\"><option value=\"a\">am</option><option value=\"p\">pm</option></select>");
-
-        return sb.toString();
-    }
-
     public String find(HashMap<String, String> params) {
         JSONObject json = new JSONObject();
         JSONArray sections = new JSONArray();
@@ -382,7 +74,7 @@ public class SearchDAO {
             ps.setString(14, params.get("days"));
 
             ps.setString(15, params.get("term"));
-            System.err.print("QUERYH STRINGGGGG----");
+            System.err.print("QUERY STRING----");
             System.err.println(ps.toString());
 
             boolean hasresults = ps.execute();
@@ -455,6 +147,311 @@ public class SearchDAO {
         }
 
         return JSONValue.toJSONString(json);
+    }
+
+    /*
+     * HTML METHODS
+     */
+    public String getSubjectListAsHTML() {
+
+        StringBuilder myStringBuilder = new StringBuilder();
+
+        Connection conn = daoFactory.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+
+            ps = conn.prepareStatement(QUERY_SUBJECT_LIST);
+
+            boolean hasresults = ps.execute();
+
+            if (hasresults) {
+
+                rs = ps.getResultSet();
+
+                myStringBuilder.append("<select name=\"subject\" id=\"subject\" size=\"10\">");
+
+                while (rs.next()) {
+
+                    String id = rs.getString("id");
+                    String description = rs.getString("name");
+
+                    myStringBuilder.append("<option value=\"").append(id).append("\">").append(description)
+                            .append("</option>");
+
+                }
+
+                myStringBuilder.append("</select>");
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                    rs = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                    ps = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                    conn = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+        return myStringBuilder.toString();
+
+    }
+
+    public String getScheduleTypeListAsHTML() {
+
+        StringBuilder myStringBuilder = new StringBuilder();
+
+        Connection conn = daoFactory.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+
+            ps = conn.prepareStatement(QUERY_SCHEDULETYPE_LIST);
+
+            boolean hasresults = ps.execute();
+
+            if (hasresults) {
+
+                rs = ps.getResultSet();
+
+                myStringBuilder.append("<select name=\"scheduleType\" id=\"scheduleType\"size=\"3\">");
+                myStringBuilder.append("<option value=\"0\" selected=\"\">All</option>");
+
+                while (rs.next()) {
+
+                    String id = rs.getString("id");
+                    String description = rs.getString("description");
+
+                    myStringBuilder.append("<option value=\"").append(id).append("\">").append(description)
+                            .append("</option>");
+                }
+
+                myStringBuilder.append("</select>");
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                    rs = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                    ps = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                    conn = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+        return myStringBuilder.toString();
+
+    }
+
+    public String getLevelListAsHTML() {
+
+        StringBuilder myStringBuilder = new StringBuilder();
+
+        Connection conn = daoFactory.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+
+            ps = conn.prepareStatement(QUERY_LEVEL_LIST);
+
+            boolean hasresults = ps.execute();
+
+            if (hasresults) {
+
+                rs = ps.getResultSet();
+
+                myStringBuilder.append("<select name=\"courseLevel\" id=\"courseLevel\">");
+
+                myStringBuilder.append("<option value=\"0\" selected=\"\">All</option>");
+
+                while (rs.next()) {
+
+                    String id = rs.getString("id");
+                    String description = rs.getString("description");
+
+                    myStringBuilder.append("<option value=\"").append(id).append("\">").append(description)
+                            .append("</option>");
+                }
+
+                myStringBuilder.append("</select>");
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                    rs = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                    ps = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                    conn = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+        return myStringBuilder.toString();
+
+    }
+
+    public String getTermListAsHTML() {
+
+        StringBuilder myStringBuilder = new StringBuilder();
+
+        Connection conn = daoFactory.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+
+            ps = conn.prepareStatement(QUERY_TERM_LIST);
+
+            boolean hasresults = ps.execute();
+
+            if (hasresults) {
+
+                rs = ps.getResultSet();
+
+                myStringBuilder.append("<select name=\"term\" id=\"term\">");
+
+                while (rs.next()) {
+
+                    String id = rs.getString("id");
+                    String description = rs.getString("name");
+
+                    myStringBuilder.append("<option value=\"").append(id).append("\">").append(description)
+                            .append("</option>");
+
+                }
+
+                myStringBuilder.append("</select>");
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                    rs = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                    ps = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                    conn = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+        return myStringBuilder.toString();
+
+    }
+
+    public String getTimeFieldsAsHTML(String type) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Hour <select id=\"").append(type).append("hour\" name=\"").append(type)
+                .append("hour\" size=\"1\">");
+        for (int i = 0; i <= 12; i++) {
+            sb.append("<option value=\"").append(i).append("\">")
+                    .append(String.format("%02d", i)).append("</option>");
+        }
+        sb.append("</select>");
+
+        sb.append(" Minute <select id=\"").append(type).append("min\" name=\"").append(type)
+                .append("min\" size=\"1\">");
+        for (int i = 0; i <= 55; i += 5) {
+            sb.append("<option value=\"").append(i).append("\">")
+                    .append(String.format("%02d", i)).append("</option>");
+        }
+        sb.append("</select>");
+
+        sb.append(" AM/PM <select id=\"").append(type).append("ap\" name=\"").append(type)
+                .append("ap\" size=\"1\"><option value=\"a\">am</option><option value=\"p\">pm</option></select>");
+
+        return sb.toString();
     }
 
 }
