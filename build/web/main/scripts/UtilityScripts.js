@@ -61,10 +61,7 @@ var Project2 = (function () {
 
         output.innerHTML = text;
     };
-
-
     return {
-
         getSchedule: function () {
             $.ajax({
                 url: "http://localhost:8180/SchedulePlannerProject2/main/register",
@@ -79,10 +76,8 @@ var Project2 = (function () {
                     else {
                         displaySectionsTable(data);
                     }
-
                 }
             });
-
         },
         search: function () {
             $.ajax({
@@ -97,13 +92,10 @@ var Project2 = (function () {
                         console.log(data);
                         displaySectionsTable(data);
                     }
-
                 }
             });
-
         },
         register: function () {
-            //  $("#delform").click(function(e){e.preventDefault();});       
             $.ajax({
                 url: "http://localhost:8180/SchedulePlannerProject2/main/register",
                 method: 'POST',
@@ -122,10 +114,7 @@ var Project2 = (function () {
             });
 
         },
-
-
         unregister: function () {
-
             var that = this;
             console.log("got into delete");
             var url = "http://localhost:8180/SchedulePlannerProject2/main/register?";
@@ -140,9 +129,6 @@ var Project2 = (function () {
                     that.getSchedule();
                 }
             });
-
         }
-
     };
-
 })();
