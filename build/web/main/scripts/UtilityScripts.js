@@ -2,7 +2,6 @@ var Project2 = (function () {
     var displaySectionsTable = function (data) {
         var sections = data.sections;
         var output = document.getElementById("output");
-
         var text = " ";
 
         for (var i = 0; i < sections.length; ++i) {
@@ -58,7 +57,6 @@ var Project2 = (function () {
             text += ("</tbody>");
             text += ("</table>");
         }
-
         output.innerHTML = text;
     };
     return {
@@ -89,7 +87,6 @@ var Project2 = (function () {
                         $("#output").html("No classes were found that meet your search criteria ");
                     }
                     else {
-                        console.log(data);
                         displaySectionsTable(data);
                     }
                 }
@@ -116,7 +113,6 @@ var Project2 = (function () {
         },
         unregister: function () {
             var that = this;
-            console.log("got into delete");
             var url = "http://localhost:8180/SchedulePlannerProject2/main/register?";
             url = url + $("#delform").serialize();
             $.ajax({
